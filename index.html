@@ -1,173 +1,281 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    </head>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Album example · Bootstrap v5.1</title>
 
-    <body>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/album/">
 
-        <!-- This is the section for SVGs -->
-        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-            <symbol id="bootstrap" viewBox="0 0 118 94">
-              <title>Bootstrap</title>
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"></path>
-            </symbol>
-            <symbol id="home" viewBox="0 0 16 16">
-              <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
-            </symbol>
-            <symbol id="speedometer2" viewBox="0 0 16 16">
-              <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
-              <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"/>
-            </symbol>
-            <symbol id="table" viewBox="0 0 16 16">
-              <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z"/>
-            </symbol>
-            <symbol id="people-circle" viewBox="0 0 16 16">
-              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-            </symbol>
-            <symbol id="grid" viewBox="0 0 16 16">
-              <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
-            </symbol>
-          </svg>
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="https://getbootstrap.com/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="https://getbootstrap.com/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="https://getbootstrap.com/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="https://getbootstrap.com/docs/5.1/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="https://getbootstrap.com/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+<link rel="icon" href="https://getbootstrap.com/docs/5.1/assets/img/favicons/favicon.ico">
+<meta name="theme-color" content="#7952b3">
 
 
-          <!-- Navigation -->
-          <header>
-            <div class="px-3 py-2 bg-dark text-white">
-              <div class="container">
-                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                  <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-                    <div>
-                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQMAAADCCAMAAAB6zFdcAAAAflBMVEXn5+cAAADt7e1zc3Pp6enu7u7l5eXx8fH19fXz8/P39/fb29vHx8fMzMzR0dF+fn42NjYfHx+cnJxSUlKPj48sLCy4uLhiYmKTk5NGRkYPDw++vr6IiIjY2NixsbHCwsKnp6daWlpoaGgWFhZwcHAcHBw/Pz8mJiZJSUmpqamUwxdOAAAD1UlEQVR4nO3c23aiMBQGYBI2IMjBU9UqarWttu//gmOCWCIwTW/K6s7/XdJ2FvzGZGeTNZ4HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4BRJQ9/B4EbZzvUQ5EzMR0PfxLCSQojN2OmBQL642suh72NA8ZuKQMwczkAWOgKxSJwNIVpXEYgn/yDdTCHYiy/HQzz0/QxAZsKwcHBxCJ/NDEQRDX1Lvy14E49cmxKiZSsCkbsVAu2e2hnMgqFv61fFRTsCsXIqA5l2RHBdGlwKgVadGYhPd2YE2TEhaqU7GSSPpUFt6UwGjxXiF3KmVpR+TwSFOw2lcUdtoEzGQ9/ZrwleOhO4lA611JLuhfEQuxMB0aYrAn8Utn5VkhdEHJeKnhqxo6cot8f52zqTEbsBIrung2LsRWapTOPqJ5syDZgNBll2rwpPz8WSgsZHLg/1jzanjNdYkO3myd20aHzkFDbW0DLkNBT69ku3j3yV3t/BUu7PJ/UE+pxxCmH+vwzUzBDW8wLFUZiWk1s6Wz79Rjp+k4GYNrZORFK+VFuszZ5Ne+H/34XKwtg4ROGt65RyCaF3x9Tkm8tAvJ2qq5ecyerQtzY+hJAYfxSkem78SHr+0T9G7r97fq0wl4Ege1VXmbSe+zsopr25DFTlJZfttXy1C+HhmFJyUhdLHm2W5MMug5OZAeXv14vvPNptI6tJUX0bzC9/oP+Ox7md3s76o7P5uJSriz6LDCjvbKJ0DQTzeZPz9dqk3Wr5g8LwbJnByswg1md3MhYTAp0sMxBml1Vu9eBgUSLYVYrKzKwRdqpiXrA4uBR82mZwMp43HKttdMGiXpa5bQYPE6CeSHwWGRDZZjA1N4qMMvBGF9sQls0MQv2SjsdLyTD5rp1299JcHSlXO40Zj5baqOs0UifjzUtVYG5ZFIp9b107rJsPrKPbMOklWe8YzFNasZpGPjwWxbJHqe2OoTkOqjKRzZEl3Qqw0ZwPqhdUByYZhH0nUVoah/WqYXBmsTIq44llBtuvCTDQu81PFjsmxTaDRp0Y6NcSRx6LgmKbwSSsnzme6Qt8XrxazwfHuiaMqgiYdJW13LK9fusVEFUdhxOfb4J9jaSHvozT6sXzmUdfvRIv7CKYqDfvlK2qimrO6fwiJZZTYhnttuv6jcwx5BMB0WFm+VWYXu419WbN6L9JoNDiDEbLM5vjF0p0/HkC8yWro3lk3U+tTf3U4zQIrhlk/g8U6/1ulHAaA9p1tfuBgNFMCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGDlH/NGJwD2qf8JAAAAAElFTkSuQmCC"/>
-                    </div>
-                  </a>
-        
-                  <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-                    <li>
-                      <a href="#" class="nav-link text-secondary">
-                        <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#home"></use></svg>
-                        Home
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" class="nav-link text-white">
-                        <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#speedometer2"></use></svg>
-                        Dashboard
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" class="nav-link text-white">
-                        <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"></use></svg>
-                        Orders
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" class="nav-link text-white">
-                        <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"></use></svg>
-                        Products
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" class="nav-link text-white">
-                        <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"></use></svg>
-                        Customers
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .card-img {
+            display: block;
+            width: 100%;
+            height: 225px;
+            background-position: center center;
+            background-size: cover;
+        }
+    </style>
+
+    
+  </head>
+  <body>
+    
+<header>
+  <div class="collapse bg-dark" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-white">About</h4>
+          <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4 class="text-white">Contact</h4>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white">Follow on Twitter</a></li>
+            <li><a href="#" class="text-white">Like on Facebook</a></li>
+            <li><a href="#" class="text-white">Email me</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <strong>MyLogo</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">My Landing Page</h1>
+        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+        <p>
+          <a href="./pricing.html" class="btn btn-primary my-2">See Pricing</a>
+          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card shadow-sm">
+
+
+            <div class="card-img" style="background-image: url('../nature.jpg');">
+                <title>Placeholder</title>
             </div>
-            <div class="px-3 py-2 border-bottom mb-3">
-              <div class="container d-flex flex-wrap justify-content-center">
-                <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto">
-                  <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-                </form>
-        
-                <div class="text-end">
-                  <button type="button" class="btn btn-light text-dark me-2">Login</button>
-                  <button type="button" class="btn btn-primary">Sign-up</button>
-                </div>
-              </div>
-            </div>
-          </header>
 
-          <!-- Hero -->
-          <div class="px-4 pt-5 my-5 text-center border-bottom">
-            <h1 class="display-4 fw-bold">HELL0 W0RLD!</h1>
-            <div class="col-lg-6 mx-auto">
-              <p class="lead mb-4">01001000 01000101 01001100 01001100 01001111 00100000 01010111 01001111 01010010 01001100 01000100 00100001 00100000 01001000 01000101 01001100 01001100 01001111 00100000 01010111 01001111 01010010 01001100 01000100 00100001 00100000 01001000 01000101 01001100 01001100 01001111 00100000 01010111 01001111 01010010 01001100 01000100 00100001 00100000 01001000 01000101 01001100 01001100 01001111 00100000 01010111 </p>
-              <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-                <button type="button" class="btn btn-outline-secondary btn-lg px-4">This button doesn't do anything</button>
-                <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">, yet</button>
-              </div>
-            </div>
-            <div class="overflow-hidden" style="max-height: 30vh;">
-              <div class="container px-lg-5">
-                <img src="data:image/png;base64,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" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
-              </div>
-            </div>
-          </div>
-          <!-- Cards -->
-          <div class="container px-4 py-5" id="hanging-icons">
-            <h2 class="pb-2 border-bottom">Hanging icons</h2>
-            <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-              <div class="col d-flex align-items-start">
-                <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-                  <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
+            <div class="card-body">
+              <p class="card-text">This is the description after the change...</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                 </div>
-                <div>
-                  <h2>Featured title</h2>
-                  <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-                  <a href="#" class="btn btn-primary">
-                    Primary button
-                  </a>
-                </div>
-              </div>
-              <div class="col d-flex align-items-start">
-                <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-                  <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"></use></svg>
-                </div>
-                <div>
-                  <h2>Featured title</h2>
-                  <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-                  <a href="#" class="btn btn-primary">
-                    Primary button
-                  </a>
-                </div>
-              </div>
-              <div class="col d-flex align-items-start">
-                <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-                  <svg class="bi" width="1em" height="1em"><use xlink:href="#tools"></use></svg>
-                </div>
-                <div>
-                  <h2>Featured title</h2>
-                  <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-                  <a href="#" class="btn btn-primary">
-                    Primary button
-                  </a>
-                </div>
+                <small class="text-muted">9 mins</small>
               </div>
             </div>
           </div>
-          <!-- Footer -->
-          <div class="container">
-            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-              <p class="col-md-4 mb-0 text-muted">© 2021 Company, Inc</p>
-          
-              <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-              </a>
-          
-              <ul class="nav col-md-4 justify-content-end">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-              </ul>
-            </footer>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            
+            <div class="card-img" style="background-image: url('../products/p1.jpg');">
+                <title>Placeholder</title>
+            </div>
+
+            <div class="card-body">
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
           </div>
-    </body>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+            <div class="card-body">
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+            <div class="card-body">
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+            <div class="card-body">
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+            <div class="card-body">
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+            <div class="card-body">
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+            <div class="card-body">
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+            <div class="card-body">
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="text-muted py-5">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="#">Back to top</a>
+    </p>
+    <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+    <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="https://getbootstrap.com/docs/5.1/getting-started/introduction/">getting started guide</a>.</p>
+  </div>
+</footer>
+
+
+    <script src="https://getbootstrap.com/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+      
+  </body>
 </html>
